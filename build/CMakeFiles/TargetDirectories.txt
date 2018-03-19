@@ -1,0 +1,1 @@
+/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles/ecs.dir

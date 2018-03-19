@@ -1,0 +1,66 @@
+#include "predict.h"
+#include "vector"
+#include "iostream"
+#include <stdio.h>
+using namespace std;
+
+
+class vm{
+public:
+    char vmName[MAX_NAME_LEN];
+    int cpuNum;
+    int menmerySize;
+};
+
+class vm_data{
+public:
+    char dataID[MAX_NAME_LEN];
+    char vmName[MAX_NAME_LEN];
+    char date[MAX_NAME_LEN];
+    char time[MAX_NAME_LEN];
+};
+
+vector<vm> vmInfoVec;
+vector<vm_data> dataInfoVec;
+
+void init_vm_info(char * info[MAX_INFO_NUM], int info_num, vector<vm> &vmList){
+	vm vmTmp;
+	for(int i = 0; i < info_num; ++i){
+		sscanf(info[i], "%s %d %d", vmTmp.vmName, &(vmTmp.cpuNum), &(vmTmp.menmerySize));
+		vmList.push_back(vmTmp);
+	}
+}
+
+void init_data_info(char * data[MAX_DATA_NUM], int data_num, vector<vm_data> &dataList){
+	vm_data dataTmp;
+	for(int i = 0; i < data_num; ++i){
+		sprintf(data[i], "%s %s %s %s", dataTmp.dataID, dataTmp.vmName, dataTmp.date, dataTmp.time);
+		dataList.push_back(dataTmp);
+	}
+}
+
+void predict_server(char * info[MAX_INFO_NUM], int info_num, char * data[MAX_DATA_NUM], int data_num, char * filename)
+{	
+	init_vm_info(info, info_num, vmInfoVec);
+	init_data_info(data, data_num, dataInfoVec);
+	for(int i = 0; i < data_num; ++i){
+		cout << dataInfoVec[i].dataID << " " << dataInfoVec[i].vmName << " " << dataInfoVec[i].date << " " << dataInfoVec[i].time << endl;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
