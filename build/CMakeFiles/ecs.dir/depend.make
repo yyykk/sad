@@ -11,4 +11,10 @@ CMakeFiles/ecs.dir/io.cpp.o: /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/io.cp
 CMakeFiles/ecs.dir/predict.cpp.o: /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/lib/lib_io.h
 CMakeFiles/ecs.dir/predict.cpp.o: /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/predict.cpp
 CMakeFiles/ecs.dir/predict.cpp.o: /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/predict.h
+CMakeFiles/ecs.dir/predict.cpp.o: /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/xjbyc.h
+
+CMakeFiles/ecs.dir/xjbyc.cpp.o: /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/lib/lib_io.h
+CMakeFiles/ecs.dir/xjbyc.cpp.o: /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/predict.h
+CMakeFiles/ecs.dir/xjbyc.cpp.o: /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/xjbyc.cpp
+CMakeFiles/ecs.dir/xjbyc.cpp.o: /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/xjbyc.h
 

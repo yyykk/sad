@@ -43,6 +43,8 @@ signal.h
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/predict.cpp
 predict.h
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/predict.h
+xjbyc.h
+/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/xjbyc.h
 vector
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/vector
 iostream
@@ -62,5 +64,23 @@ stdlib.h
 lib_io.h
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/lib_io.h
 map
+-
+
+/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/xjbyc.cpp
+xjbyc.h
+/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/xjbyc.h
+string.h
+-
+algorithm
+-
+map
+-
+iostream
+-
+
+/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/xjbyc.h
+predict.h
+/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/predict.h
+vector
 -
 

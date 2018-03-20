@@ -186,6 +186,30 @@ predict.cpp.s:
 	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/predict.cpp.s
 .PHONY : predict.cpp.s
 
+xjbyc.o: xjbyc.cpp.o
+.PHONY : xjbyc.o
+
+# target to build an object file
+xjbyc.cpp.o:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/xjbyc.cpp.o
+.PHONY : xjbyc.cpp.o
+
+xjbyc.i: xjbyc.cpp.i
+.PHONY : xjbyc.i
+
+# target to preprocess a source file
+xjbyc.cpp.i:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/xjbyc.cpp.i
+.PHONY : xjbyc.cpp.i
+
+xjbyc.s: xjbyc.cpp.s
+.PHONY : xjbyc.s
+
+# target to generate assembly for a file
+xjbyc.cpp.s:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/xjbyc.cpp.s
+.PHONY : xjbyc.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -204,6 +228,9 @@ help:
 	@echo "... predict.o"
 	@echo "... predict.i"
 	@echo "... predict.s"
+	@echo "... xjbyc.o"
+	@echo "... xjbyc.i"
+	@echo "... xjbyc.s"
 .PHONY : help
 
 

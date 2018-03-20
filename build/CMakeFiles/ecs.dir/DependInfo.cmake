@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/ecs.cpp" "/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles/ecs.dir/ecs.cpp.o"
   "/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/io.cpp" "/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles/ecs.dir/io.cpp.o"
   "/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/predict.cpp" "/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles/ecs.dir/predict.cpp.o"
+  "/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/xjbyc.cpp" "/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles/ecs.dir/xjbyc.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

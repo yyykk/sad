@@ -72,9 +72,32 @@ CMakeFiles/ecs.dir/ecs.cpp.o.provides: CMakeFiles/ecs.dir/ecs.cpp.o.requires
 
 CMakeFiles/ecs.dir/ecs.cpp.o.provides.build: CMakeFiles/ecs.dir/ecs.cpp.o
 
+CMakeFiles/ecs.dir/xjbyc.cpp.o: CMakeFiles/ecs.dir/flags.make
+CMakeFiles/ecs.dir/xjbyc.cpp.o: /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/xjbyc.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ecs.dir/xjbyc.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/xjbyc.cpp.o -c /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/xjbyc.cpp
+
+CMakeFiles/ecs.dir/xjbyc.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/xjbyc.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/xjbyc.cpp > CMakeFiles/ecs.dir/xjbyc.cpp.i
+
+CMakeFiles/ecs.dir/xjbyc.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/xjbyc.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/xjbyc.cpp -o CMakeFiles/ecs.dir/xjbyc.cpp.s
+
+CMakeFiles/ecs.dir/xjbyc.cpp.o.requires:
+.PHONY : CMakeFiles/ecs.dir/xjbyc.cpp.o.requires
+
+CMakeFiles/ecs.dir/xjbyc.cpp.o.provides: CMakeFiles/ecs.dir/xjbyc.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/xjbyc.cpp.o.provides.build
+.PHONY : CMakeFiles/ecs.dir/xjbyc.cpp.o.provides
+
+CMakeFiles/ecs.dir/xjbyc.cpp.o.provides.build: CMakeFiles/ecs.dir/xjbyc.cpp.o
+
 CMakeFiles/ecs.dir/io.cpp.o: CMakeFiles/ecs.dir/flags.make
 CMakeFiles/ecs.dir/io.cpp.o: /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/io.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ecs.dir/io.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/io.cpp.o -c /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/io.cpp
 
@@ -97,7 +120,7 @@ CMakeFiles/ecs.dir/io.cpp.o.provides.build: CMakeFiles/ecs.dir/io.cpp.o
 
 CMakeFiles/ecs.dir/predict.cpp.o: CMakeFiles/ecs.dir/flags.make
 CMakeFiles/ecs.dir/predict.cpp.o: /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/predict.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ecs.dir/predict.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/predict.cpp.o -c /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/predict.cpp
 
@@ -121,6 +144,7 @@ CMakeFiles/ecs.dir/predict.cpp.o.provides.build: CMakeFiles/ecs.dir/predict.cpp.
 # Object files for target ecs
 ecs_OBJECTS = \
 "CMakeFiles/ecs.dir/ecs.cpp.o" \
+"CMakeFiles/ecs.dir/xjbyc.cpp.o" \
 "CMakeFiles/ecs.dir/io.cpp.o" \
 "CMakeFiles/ecs.dir/predict.cpp.o"
 
@@ -128,6 +152,7 @@ ecs_OBJECTS = \
 ecs_EXTERNAL_OBJECTS =
 
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/bin/ecs: CMakeFiles/ecs.dir/ecs.cpp.o
+/home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/bin/ecs: CMakeFiles/ecs.dir/xjbyc.cpp.o
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/bin/ecs: CMakeFiles/ecs.dir/io.cpp.o
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/bin/ecs: CMakeFiles/ecs.dir/predict.cpp.o
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/bin/ecs: CMakeFiles/ecs.dir/build.make
@@ -140,6 +165,7 @@ CMakeFiles/ecs.dir/build: /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/bin/ecs
 .PHONY : CMakeFiles/ecs.dir/build
 
 CMakeFiles/ecs.dir/requires: CMakeFiles/ecs.dir/ecs.cpp.o.requires
+CMakeFiles/ecs.dir/requires: CMakeFiles/ecs.dir/xjbyc.cpp.o.requires
 CMakeFiles/ecs.dir/requires: CMakeFiles/ecs.dir/io.cpp.o.requires
 CMakeFiles/ecs.dir/requires: CMakeFiles/ecs.dir/predict.cpp.o.requires
 .PHONY : CMakeFiles/ecs.dir/requires

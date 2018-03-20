@@ -1,1 +1,1 @@
-/usr/bin/c++    -O3 -Wall -std=c++11   CMakeFiles/ecs.dir/ecs.cpp.o CMakeFiles/ecs.dir/io.cpp.o CMakeFiles/ecs.dir/predict.cpp.o  -o /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/bin/ecs -rdynamic 
+/usr/bin/c++    -O3 -Wall -std=c++11   CMakeFiles/ecs.dir/ecs.cpp.o CMakeFiles/ecs.dir/xjbyc.cpp.o CMakeFiles/ecs.dir/io.cpp.o CMakeFiles/ecs.dir/predict.cpp.o  -o /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/bin/ecs -rdynamic 

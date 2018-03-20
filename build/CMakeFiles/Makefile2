@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build
 CMakeFiles/ecs.dir/all:
 	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/depend
 	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles  1 2 3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles  1 2 3 4
 	@echo "Built target ecs"
 .PHONY : CMakeFiles/ecs.dir/all
 
@@ -69,7 +69,7 @@ all: CMakeFiles/ecs.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ecs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ecs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/build/CMakeFiles 0
 .PHONY : CMakeFiles/ecs.dir/rule

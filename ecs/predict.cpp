@@ -1,7 +1,8 @@
 #include "predict.h"
+#include "xjbyc.h"
 #include "vector"
 #include "iostream"
-#include<algorithm>
+#include <algorithm>
 #include <map>
 #include <string.h>
 #include <stdio.h>
@@ -118,7 +119,6 @@ void bag(){
 void format_result(char* file){
 	sprintf(file, "%d\n", foreVm.size());
 	map<string, int> temp;
-	char str_temp[MAX_NAME_LEN];
 	for(unsigned int i = 0; i < foreVm.size(); ++i){
 		temp[foreVm[i].vmName] += 1;
 	}
@@ -154,7 +154,8 @@ void test(){
 void predict_server(char * info[MAX_INFO_NUM], int info_num, char * data[MAX_DATA_NUM], int data_num, char * filename){
 	char result_file[MAX_DATA_NUM];
 	init_info(info, info_num, data, data_num);
-	test();
+	//test();
+	xjbyc(foreVm, dataInfoVec, vmInfoVec);
 	bag();
 	format_result(result_file);
 	cout << result_file;

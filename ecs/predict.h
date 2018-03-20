@@ -16,6 +16,9 @@ struct vm{
     char vmName[MAX_NAME_LEN];
     int cpuNum;
     int RAMSize;
+    bool operator == (const vm& vma){
+        return this->vmName == vma.vmName;
+    }
 };
 
 struct vm_data{
