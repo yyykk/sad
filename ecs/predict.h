@@ -21,6 +21,15 @@ struct vm{
     }
 };
 
+struct time_1s{
+    int year;
+    int month;
+    int day;
+    int hour;
+    int minute;
+    int second;
+};
+
 struct vm_data{
     char dataID[MAX_NAME_LEN];
     char vmName[MAX_NAME_LEN];

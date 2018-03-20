@@ -35,7 +35,7 @@ void xjbyc(std::vector<vm> &foreVm, std::vector<vm_data> &data, std::vector<vm> 
     cout << "day = " << day_num << endl;
     for(map<string, float>::iterator it = foreVmMap.begin(); it != foreVmMap.end(); ++it){
         cout << it->first << " " << it->second << endl;
-        for(int i = 0; i < it->second / day_num * 7; ++i){
+        for(int i = 0; i < it->second / day_num * 10; ++i){
             foreVm.push_back(vmInfoVec[find_vm(it->first, vmInfoVec)]);
         }
     }

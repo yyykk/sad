@@ -13,8 +13,8 @@ int vmNum = 0;
 int foreVmNum = 0;
 int foreRealCom = 0;
 char opt[MAX_NAME_LEN];
-char beginTime[MAX_NAME_LEN];
-char endTime[MAX_NAME_LEN];
+time_1s beginTime;
+time_1s endTime;
 realComputer computer;
 vector<vm> vmInfoVec;
 vector<vm_data> dataInfoVec;
@@ -31,6 +31,8 @@ bool foreVm_sort(const vm& vma, const vm& vmb){
 
 void init_vm_info(char * info[MAX_INFO_NUM], int info_num, vector<vm> &vmList){
 	vm vmTmp;
+	char year[MAX_NAME_LEN], month[MAX_NAME_LEN], day[MAX_NAME_LEN];
+	char hour[MAX_NAME_LEN], minute[MAX_NAME_LEN], second[MAX_NAME_LEN];
 	sscanf(info[0], "%d %d %d", &(computer.cupNum), &(computer.RAMSize), &(computer.ROMSize));
 	sscanf(info[2], "%d", &vmNum);
 	for(int i = 0; i < vmNum; ++i){
@@ -38,9 +40,20 @@ void init_vm_info(char * info[MAX_INFO_NUM], int info_num, vector<vm> &vmList){
 		vmList.push_back(vmTmp);
 	}
 	sscanf(info[vmNum + 4], "%s", opt);
-	sscanf(info[vmNum + 6], "%s", beginTime);
-	sscanf(info[vmNum + 7], "%s", endTime);
-
+	sscanf(info[vmNum + 6], "%[0-9]-%[0-9]-%[0-9] %[0-9]:%[0-9]:%[0-9]", year, month, day, hour, minute, second);
+	beginTime.year = atoi(year);
+	beginTime.month = atoi(month);
+	beginTime.day = atoi(day);
+	beginTime.hour = atoi(hour);
+	beginTime.minute = atoi(minute);
+	beginTime.second = atoi(second);
+	sscanf(info[vmNum + 7], "%[0-9]-%[0-9]-%[0-9] %[0-9]:%[0-9]:%[0-9]", year, month, day, hour, minute, second);
+	endTime.year = atoi(year);
+	endTime.month = atoi(month);
+	endTime.day = atoi(day);
+	endTime.hour = atoi(hour);
+	endTime.minute = atoi(minute);
+	endTime.second = atoi(second);
 }
 
 void init_data_info(char * data[MAX_DATA_NUM], int data_num, vector<vm_data> &dataList){
@@ -137,6 +150,7 @@ void format_result(char* file){
 	cout << "format_end" << endl;
 }
 
+/*
 void test(){
 	strcpy(opt, "CPU");
 	vm temp[6] = 
@@ -150,6 +164,7 @@ void test(){
 	}
 	cout << "test_end" << endl;
 }
+*/
 
 void predict_server(char * info[MAX_INFO_NUM], int info_num, char * data[MAX_DATA_NUM], int data_num, char * filename){
 	char result_file[MAX_DATA_NUM];
