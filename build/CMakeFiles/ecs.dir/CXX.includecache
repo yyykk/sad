@@ -47,6 +47,8 @@ vector
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/vector
 iostream
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/iostream
+string.h
+-
 stdio.h
 -
 stdlib.h
@@ -55,4 +57,6 @@ stdlib.h
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/predict.h
 lib_io.h
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/lib_io.h
+map
+-
 
