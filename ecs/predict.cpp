@@ -1,6 +1,7 @@
 #include "predict.h"
 #include "vector"
 #include "iostream"
+#include <map>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +18,15 @@ vector<vm> vmInfoVec;
 vector<vm_data> dataInfoVec;
 
 vector<vm> foreVm;
-vector<map<char*, int>> result;
+vector<map<char*, int> > result;
+
+bool operator > (const char *a, const char *b){
+	if(strcmp(a, b) == 0){
+		return true;
+	}else{
+		return false;
+	}
+}
 
 void init_vm_info(char * info[MAX_INFO_NUM], int info_num, vector<vm> &vmList){
 	vm vmTmp;
@@ -54,18 +63,18 @@ void init_info(char * info[MAX_INFO_NUM], int info_num, char * data[MAX_DATA_NUM
 	init_vm_info(info, info_num, vmInfoVec);
 	init_data_info(data, data_num, dataInfoVec);
 	cout << computer.cupNum << " " << computer.RAMSize << " " << computer.ROMSize << endl;
-	cout << vmNum << endl;
-	for(int i = 0; i < vmNum; ++i){
-		cout << vmInfoVec[i].vmName << " " << vmInfoVec[i].cpuNum << " " << vmInfoVec[i].RAMSize << endl;
-	}
-	cout << opt << endl;
-	cout << beginTime << endl;
-	cout << endTime << endl;
-	for(int i = 0; i < data_num; ++i){
-		cout << dataInfoVec[i].dataID << " " << dataInfoVec[i].vmName << " " 
-		<< dataInfoVec[i].year << "-" << dataInfoVec[i].month << "-" << dataInfoVec[i].day << " "  
-		<< dataInfoVec[i].hour << ":" << dataInfoVec[i].minute << ":" << dataInfoVec[i].second << endl;
-	}
+	//cout << vmNum << endl;
+	//for(int i = 0; i < vmNum; ++i){
+	//	cout << vmInfoVec[i].vmName << " " << vmInfoVec[i].cpuNum << " " << vmInfoVec[i].RAMSize << endl;
+	//}
+	//cout << opt << endl;
+	//cout << beginTime << endl;
+	//cout << endTime << endl;
+	//for(int i = 0; i < data_num; ++i){
+	//	cout << dataInfoVec[i].dataID << " " << dataInfoVec[i].vmName << " " 
+	//	<< dataInfoVec[i].year << "-" << dataInfoVec[i].month << "-" << dataInfoVec[i].day << " "  
+	//	<< dataInfoVec[i].hour << ":" << dataInfoVec[i].minute << ":" << dataInfoVec[i].second << endl;
+	//}
 }
 
 void bag(){
@@ -75,11 +84,14 @@ void bag(){
 	for(unsigned int i = 0; i < foreVm.size(); ++i){
 		s = 0;
 		vm_Val = opt_s == 0 ? foreVm[i].cpuNum : foreVm[i].RAMSize;
+		//cout << "vm_Val = " << vm_Val << endl;
 		for(unsigned int j = 0; j < result.size(); ++j){
+			//cout << "opt_remain = " << opt_remain[j] << endl;
 			if(opt_remain[j] >= vm_Val){
 				opt_remain[j] -= vm_Val;
 				result[j][foreVm[i].vmName] += 1;
 				s = 1;
+				break;
 			}
 		}
 		if(s == 0){
@@ -88,15 +100,62 @@ void bag(){
 			result.push_back(temp);
 			opt_remain.push_back(opt_val - vm_Val);
 		}
+		for(unsigned int i = 0; i < opt_remain.size(); ++i){
+			//cout << opt_remain[i] << endl;
+		}
 	}
+	for(unsigned int i = 0; i < result.size(); ++i){
+		//cout << i + 1 << endl;
+		for(map<char*, int>::iterator it = result[i].begin(); it != result[i].end(); ++it){
+			//cout << it->first << " " << it->second << endl;
+		}
+	}
+	cout << "bag_end" << endl;
 }
 
-void get_result(char* &file){
-	
+void format_result(char* file){
+	sprintf(file, "%d\n", foreVm.size());
+	map<char*, int> temp;
+	for(unsigned int i = 0; i < foreVm.size(); ++i){
+		temp[foreVm[i].vmName] += 1;
+	}
+	for(map<char*, int>::iterator it = temp.begin(); it != temp.end(); ++it) {
+		sprintf(file, "%s%s %d\n", file, it->first, it->second);
+	}
+	sprintf(file, "%s\n", file);
+	sprintf(file, "%s%d\n", file, result.size());
+	for(unsigned int i = 0; i < result.size(); ++i){
+		sprintf(file, "%s%d ", file, i + 1);
+		for(map<char*, int>::iterator it = result[i].begin(); it != result[i].end(); ++it){
+			sprintf(file, "%s%s %d ", file, it->first, it->second);
+		}
+		sprintf(file, "%s\n", file);
+	}
+	cout << "format_end" << endl;
+}
+
+void test(){
+	strcpy(opt, "CPU");
+	vm temp[6] = 
+	{
+		{"flavor5", 2, 4096}, {"flavor5", 2, 4096}, {"flavor5", 2, 4096},
+		{"flavor10", 8, 8192}, {"flavor10", 8, 8192},
+		{"flavor15", 16, 65536}
+	};
+	for(int i = 0; i < 6; ++i){
+		foreVm.push_back(temp[i]);
+	}
+	cout << "test_end" << endl;
 }
 
 void predict_server(char * info[MAX_INFO_NUM], int info_num, char * data[MAX_DATA_NUM], int data_num, char * filename){
+	char result_file[MAX_DATA_NUM];
 	init_info(info, info_num, data, data_num);
+	test();
+	bag();
+	format_result(result_file);
+	cout << result_file;
+	write_result(result_file, filename);
 }
 
 
