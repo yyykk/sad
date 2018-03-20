@@ -47,6 +47,8 @@ vector
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/vector
 iostream
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/iostream
+algorithm
+-
 map
 -
 string.h

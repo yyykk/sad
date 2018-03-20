@@ -1,6 +1,7 @@
 #include "predict.h"
 #include "vector"
 #include "iostream"
+#include<algorithm>
 #include <map>
 #include <string.h>
 #include <stdio.h>
@@ -18,14 +19,13 @@ vector<vm> vmInfoVec;
 vector<vm_data> dataInfoVec;
 
 vector<vm> foreVm;
-vector<map<char*, int> > result;
+vector<map<string, int> > result;
 
-bool operator > (const char *a, const char *b){
-	if(strcmp(a, b) == 0){
-		return true;
-	}else{
-		return false;
-	}
+bool foreVm_sort(const vm& vma, const vm& vmb){
+	int a = 0, b = 0;
+	sscanf(vma.vmName, "flavor%d", &a);
+	sscanf(vmb.vmName, "flavor%d", &b);
+	return a > b;
 }
 
 void init_vm_info(char * info[MAX_INFO_NUM], int info_num, vector<vm> &vmList){
@@ -80,6 +80,7 @@ void init_info(char * info[MAX_INFO_NUM], int info_num, char * data[MAX_DATA_NUM
 void bag(){
 	int s = 0, vm_Val = 0, opt_s = strcmp(opt, "CPU");
 	int opt_val = opt_s == 0 ? computer.cupNum : computer.RAMSize;
+	sort(foreVm.begin(), foreVm.end(), foreVm_sort);
 	vector<int> opt_remain;
 	for(unsigned int i = 0; i < foreVm.size(); ++i){
 		s = 0;
@@ -95,7 +96,7 @@ void bag(){
 			}
 		}
 		if(s == 0){
-			map<char*, int> temp;
+			map<string, int> temp;
 			temp[foreVm[i].vmName] += 1;
 			result.push_back(temp);
 			opt_remain.push_back(opt_val - vm_Val);
@@ -105,29 +106,31 @@ void bag(){
 		}
 	}
 	for(unsigned int i = 0; i < result.size(); ++i){
-		//cout << i + 1 << endl;
-		for(map<char*, int>::iterator it = result[i].begin(); it != result[i].end(); ++it){
-			//cout << it->first << " " << it->second << endl;
+		cout << i + 1 << endl;
+		for(map<string, int>::iterator it = result[i].begin(); it != result[i].end(); ++it){
+			cout << it->first << " " << it->second << endl;
 		}
+		cout << endl;
 	}
 	cout << "bag_end" << endl;
 }
 
 void format_result(char* file){
 	sprintf(file, "%d\n", foreVm.size());
-	map<char*, int> temp;
+	map<string, int> temp;
+	char str_temp[MAX_NAME_LEN];
 	for(unsigned int i = 0; i < foreVm.size(); ++i){
 		temp[foreVm[i].vmName] += 1;
 	}
-	for(map<char*, int>::iterator it = temp.begin(); it != temp.end(); ++it) {
-		sprintf(file, "%s%s %d\n", file, it->first, it->second);
+	for(map<string, int>::iterator it = temp.begin(); it != temp.end(); ++it) {
+		sprintf(file, "%s%s %d\n", file, (it->first).c_str(), it->second);
 	}
 	sprintf(file, "%s\n", file);
 	sprintf(file, "%s%d\n", file, result.size());
 	for(unsigned int i = 0; i < result.size(); ++i){
 		sprintf(file, "%s%d ", file, i + 1);
-		for(map<char*, int>::iterator it = result[i].begin(); it != result[i].end(); ++it){
-			sprintf(file, "%s%s %d ", file, it->first, it->second);
+		for(map<string, int>::iterator it = result[i].begin(); it != result[i].end(); ++it){
+			sprintf(file, "%s%s %d ", file, (it->first).c_str(), it->second);
 		}
 		sprintf(file, "%s\n", file);
 	}
