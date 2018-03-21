@@ -4,6 +4,6 @@
 #include "predict.h"
 #include <vector>
 
-void xjbyc(std::vector<vm> &foreVm, std::vector<vm_data> &data, std::vector<vm> &vmInfoVec);
+void xjbyc(std::vector<vm> &foreVm, std::vector<vm_data> &data, std::vector<vm> &vmInfoVec, float day_s);
 
 #endif

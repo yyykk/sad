@@ -34,6 +34,8 @@ void init_vm_info(char * info[MAX_INFO_NUM], int info_num, vector<vm> &vmList){
 	char year[MAX_NAME_LEN], month[MAX_NAME_LEN], day[MAX_NAME_LEN];
 	char hour[MAX_NAME_LEN], minute[MAX_NAME_LEN], second[MAX_NAME_LEN];
 	sscanf(info[0], "%d %d %d", &(computer.cupNum), &(computer.RAMSize), &(computer.ROMSize));
+	computer.RAMSize *= 1024;
+	computer.ROMSize *= 1024;
 	sscanf(info[2], "%d", &vmNum);
 	for(int i = 0; i < vmNum; ++i){
 		sscanf(info[i + 3], "%s %d %d", vmTmp.vmName, &(vmTmp.cpuNum), &(vmTmp.RAMSize));
@@ -91,19 +93,32 @@ void init_info(char * info[MAX_INFO_NUM], int info_num, char * data[MAX_DATA_NUM
 	//}
 }
 
+float c_time(time_1s &beginTime, time_1s &endTime){
+	float dat_s = 0;
+	int month[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	cout << beginTime.month << "-" << beginTime.day << "---->" << endTime.month << "-" << endTime.day << endl;
+	if(beginTime.month != endTime.month){
+		return month[beginTime.month] - beginTime.day + endTime.day;
+	}else{
+		return endTime.day - beginTime.day;
+	}
+}
+
 void bag(){
 	int s = 0, vm_Val = 0, opt_s = strcmp(opt, "CPU");
-	int opt_val = opt_s == 0 ? computer.cupNum : computer.RAMSize;
+	//int opt_val = opt_s == 0 ? computer.cupNum : computer.RAMSize;
 	sort(foreVm.begin(), foreVm.end(), foreVm_sort);
-	vector<int> opt_remain;
+	vector<realComputer> opt_remain;
 	for(unsigned int i = 0; i < foreVm.size(); ++i){
 		s = 0;
-		vm_Val = opt_s == 0 ? foreVm[i].cpuNum : foreVm[i].RAMSize;
+		//vm_Val = opt_s == 0 ? foreVm[i].cpuNum : foreVm[i].RAMSize;
 		//cout << "vm_Val = " << vm_Val << endl;
 		for(unsigned int j = 0; j < result.size(); ++j){
 			//cout << "opt_remain = " << opt_remain[j] << endl;
-			if(opt_remain[j] >= vm_Val){
-				opt_remain[j] -= vm_Val;
+			//cout << "opt_remain[j] = " << opt_remain[j].cupNum << " " << opt_remain[j].RAMSize << endl;
+			if(opt_remain[j].cupNum >= foreVm[i].cpuNum && opt_remain[j].RAMSize >= foreVm[i].RAMSize){
+				opt_remain[j].cupNum -= foreVm[i].cpuNum;
+				opt_remain[j].RAMSize -= foreVm[i].RAMSize;
 				result[j][foreVm[i].vmName] += 1;
 				s = 1;
 				break;
@@ -113,19 +128,26 @@ void bag(){
 			map<string, int> temp;
 			temp[foreVm[i].vmName] += 1;
 			result.push_back(temp);
-			opt_remain.push_back(opt_val - vm_Val);
-		}
-		for(unsigned int i = 0; i < opt_remain.size(); ++i){
-			//cout << opt_remain[i] << endl;
+			realComputer com_temp = computer;
+			com_temp.cupNum -= foreVm[i].cpuNum;
+			com_temp.RAMSize -= foreVm[i].RAMSize;
+			//cout << com_temp.cupNum << " " << com_temp.RAMSize << endl;
+			opt_remain.push_back(com_temp);
 		}
 	}
-	for(unsigned int i = 0; i < result.size(); ++i){
-		cout << i + 1 << endl;
-		for(map<string, int>::iterator it = result[i].begin(); it != result[i].end(); ++it){
-			cout << it->first << " " << it->second << endl;
-		}
-		cout << endl;
+	cout << "CPU" << "\t" << "RAM" << endl;
+	cout << computer.cupNum << "\t" << computer.RAMSize << endl;
+	for(unsigned int i = 0; i < opt_remain.size(); ++i){
+		cout << opt_remain[i].cupNum  << "\t" << opt_remain[i].RAMSize << endl;
 	}
+	
+	//for(unsigned int i = 0; i < result.size(); ++i){
+		//cout << i + 1 << endl;
+		//for(map<string, int>::iterator it = result[i].begin(); it != result[i].end(); ++it){
+			//cout << it->first << " " << it->second << endl;
+		//}
+		//cout << endl;
+	//}
 	cout << "bag_end" << endl;
 }
 
@@ -169,8 +191,7 @@ void test(){
 void predict_server(char * info[MAX_INFO_NUM], int info_num, char * data[MAX_DATA_NUM], int data_num, char * filename){
 	char result_file[MAX_DATA_NUM];
 	init_info(info, info_num, data, data_num);
-	//test();
-	xjbyc(foreVm, dataInfoVec, vmInfoVec);
+	xjbyc(foreVm, dataInfoVec, vmInfoVec, c_time(beginTime, endTime));
 	bag();
 	format_result(result_file);
 	cout << result_file;

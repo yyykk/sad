@@ -15,7 +15,7 @@ int find_vm(string vmName, std::vector<vm> &vmInfoVec){
     return -1;
 }
 
-void xjbyc(std::vector<vm> &foreVm, std::vector<vm_data> &data, std::vector<vm> &vmInfoVec){
+void xjbyc(std::vector<vm> &foreVm, std::vector<vm_data> &data, std::vector<vm> &vmInfoVec, float day_len){
     float day_num = 1.0, day_s = data[0].day;
     map<string, float> foreVmMap;
     for(unsigned int i = 0; i < vmInfoVec.size(); ++i){
@@ -31,11 +31,11 @@ void xjbyc(std::vector<vm> &foreVm, std::vector<vm_data> &data, std::vector<vm> 
             foreVmMap[data[i].vmName] += 1;
         }
     }
-    cout << "map_size = " << foreVmMap.size() << endl;
+    cout << "day_len = " << day_len << endl;
     cout << "day = " << day_num << endl;
     for(map<string, float>::iterator it = foreVmMap.begin(); it != foreVmMap.end(); ++it){
-        cout << it->first << " " << it->second << endl;
-        for(int i = 0; i < it->second / day_num * 10; ++i){
+        //cout << it->first << " " << it->second << endl;
+        for(int i = 0; i < it->second / day_num * 10.5; ++i){
             foreVm.push_back(vmInfoVec[find_vm(it->first, vmInfoVec)]);
         }
     }
