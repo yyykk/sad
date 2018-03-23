@@ -28,19 +28,17 @@ struct time_1s{
     int hour;
     int minute;
     int second;
+    bool operator == (const time_1s& timea){
+        return (year == timea.year
+            && month == timea.month
+            && day == timea.day);
+    }
 };
 
 struct vm_data{
     char dataID[MAX_NAME_LEN];
     char vmName[MAX_NAME_LEN];
-    char date[MAX_NAME_LEN];
-    char time[MAX_NAME_LEN];
-    int year;
-    int month;
-    int day;
-    int hour;
-    int minute;
-    int second;
+    time_1s time;
 };
 
 struct Fore{
@@ -49,5 +47,7 @@ struct Fore{
 };
 
 void predict_server(char * info[MAX_INFO_NUM], int info_num, char * data[MAX_DATA_NUM], int data_num, char * filename);	
+
+float c_time(time_1s &beginTime, time_1s &endTime);
 
 #endif

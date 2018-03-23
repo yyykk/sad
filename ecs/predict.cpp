@@ -65,12 +65,12 @@ void init_data_info(char * data[MAX_DATA_NUM], int data_num, vector<vm_data> &da
 	for(int i = 0; i < data_num; ++i){
 		sscanf(data[i], "%s %s %[0-9]-%[0-9]-%[0-9] %[0-9]:%[0-9]:%[0-9]",
 			dataTmp.dataID, dataTmp.vmName, year, month, day, hour, minute, second);
-		dataTmp.year = atoi(year);
-		dataTmp.month = atoi(month);
-		dataTmp.day = atoi(day);
-		dataTmp.hour = atoi(hour);
-		dataTmp.minute = atoi(minute);
-		dataTmp.second = atoi(second);
+		dataTmp.time.year = atoi(year);
+		dataTmp.time.month = atoi(month);
+		dataTmp.time.day = atoi(day);
+		dataTmp.time.hour = atoi(hour);
+		dataTmp.time.minute = atoi(minute);
+		dataTmp.time.second = atoi(second);
 		dataList.push_back(dataTmp);
 	}
 }
@@ -94,11 +94,14 @@ void init_info(char * info[MAX_INFO_NUM], int info_num, char * data[MAX_DATA_NUM
 }
 
 float c_time(time_1s &beginTime, time_1s &endTime){
-	float dat_s = 0;
+	float day_s = 0;
 	int month[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	cout << beginTime.month << "-" << beginTime.day << "---->" << endTime.month << "-" << endTime.day << endl;
 	if(beginTime.month != endTime.month){
-		return month[beginTime.month] - beginTime.day + endTime.day;
+		for(int i = beginTime.month; i < endTime.month; ++i){
+			day_s += month[i];
+		}
+		return day_s - beginTime.day + endTime.day;
 	}else{
 		return endTime.day - beginTime.day;
 	}

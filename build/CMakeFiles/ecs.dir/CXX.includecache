@@ -77,6 +77,8 @@ map
 -
 iostream
 -
+time.h
+-
 
 /home/will/Desktop/2018HUAWEI/sdk/sdk-gcc/ecs/xjbyc.h
 predict.h
